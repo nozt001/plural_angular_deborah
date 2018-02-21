@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'pm-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <div>
+      <h1>{{pageTitle}}</h1>
+      <div>My First Component</div>
+      <p>Build Android apps using the popular and efficient Android Studio 3 suite of tools,
+       an integrated development environment (IDE) for Android developers using Java APIs. 
+       With this book, you’ll learn the latest and most productive tools in the Android tools ecosystem, 
+       ensuring quick Android app development and minimal…</p>
+    </div>
+    
+  `
 })
 export class AppComponent {
-  title = 'Angular: Getting Started';
+  pageTitle: string = 'Acme Product Management';
 }
