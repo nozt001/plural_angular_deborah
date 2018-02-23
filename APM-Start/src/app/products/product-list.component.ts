@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { IProduct } from './product';
 
@@ -7,7 +7,7 @@ import { IProduct } from './product';
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
     imageWidth: number = 35;
     imageMargin: number = 2;
@@ -70,4 +70,15 @@ export class ProductListComponent {
     toggleImage() : void {
         this.showImage = !this.showImage;
     }
+
+    ngOnInit(): void {
+        console.log(`
+            To use a life cycle hook follow the three steps below:
+            1- Add related module name in the import section, eg. OnInit
+            2- Use implements keyword in class definition to implement the interface, e.g.
+               'export class ProductListComponent implements OnInit {'
+            3- Define the ng**** method name for the class , e.g. ngOnInit(){..}
+        `);
+    }
+
 }
