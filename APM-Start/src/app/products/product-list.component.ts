@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
     selector: 'pm-products',
@@ -12,6 +13,7 @@ export class ProductListComponent implements OnInit {
     imageWidth: number = 35;
     imageMargin: number = 2;
     showImage: boolean = false;
+    products: IProduct[];
     
     _listFilter: string;
     
@@ -25,10 +27,12 @@ export class ProductListComponent implements OnInit {
     
     filteredProducts: IProduct[];
     
-
-    constructor() {
-        this.filteredProducts = this.products;
-        this.listFilter = 'cart';
+    constructor(private _productService: ProductService) {
+        console.log(`
+              We do not want the constructor to read products from a service at the constructor time. 
+              Instead we move the initial products list gathering into ngOnInit() method 
+              which runs after the constructor
+        `);
     }
 
     onRatingClicked(message: string): void {
@@ -55,6 +59,10 @@ export class ProductListComponent implements OnInit {
                'export class ProductListComponent implements OnInit {'
             3- Define the ng**** method name for the class , e.g. ngOnInit(){..}
         `);
+
+        this.products = this._productService.getProducts();
+        this.filteredProducts = this.products;
+        this.listFilter = 'cart';
     }
 
 }
