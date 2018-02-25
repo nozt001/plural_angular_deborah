@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
     imageMargin: number = 2;
     showImage: boolean = false;
     products: IProduct[];
+    errorMessage: string;
     
     _listFilter: string;
     
@@ -60,9 +61,13 @@ export class ProductListComponent implements OnInit {
             3- Define the ng**** method name for the class , e.g. ngOnInit(){..}
         `);
 
-        this.products = this._productService.getProducts();
-        this.filteredProducts = this.products;
-        this.listFilter = 'cart';
+        this._productService.getProducts()
+            .subscribe(products => { 
+                            this.products = products;
+                            console.log(products);
+                            this.filteredProducts = this.products;
+                            this.listFilter = 'cart';},
+                       error => this.errorMessage =<any>error);
     }
 
 }
