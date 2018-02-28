@@ -53,7 +53,7 @@ export class ProductListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(`
+        console.log(` 
             To use a life cycle hook follow the three steps below:
             1- Add related module name in the import section, eg. OnInit
             2- Use implements keyword in class definition to implement the interface, e.g.
@@ -62,12 +62,12 @@ export class ProductListComponent implements OnInit {
         `);
 
         this._productService.getProducts()
-            .subscribe(products => { 
-                            this.products = products;
-                            console.log(products);
-                            this.filteredProducts = this.products;
-                            this.listFilter = 'cart';},
-                       error => this.errorMessage =<any>error);
+                                .subscribe(products => { 
+                                                this.products = products;
+                                                console.log(products);
+                                                this.filteredProducts = this.products;
+                                                this.listFilter = 'A';},
+                                        error => this.errorMessage =<any>error);
     }
 
 }
